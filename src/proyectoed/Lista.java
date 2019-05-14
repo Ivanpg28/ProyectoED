@@ -51,8 +51,18 @@ public class Lista {
     
     public NodoLista buscar(String clave){
         NodoLista actual;
-        for(actual = inicio ; actual != null && actual.getClave() != clave;actual=actual.getNodo());
-            return actual;
+        for(actual = inicio ; actual != null && !actual.getClave().equals(clave);actual=actual.getNodo());
+        return actual;
+    }
+
+    void insertar(NodoLista nodo) {
+        if(inicio == null) {
+            inicio = nodo;
+        }
+        if(fin != null) {
+            fin.setNodo(nodo);
+        }
+        fin = nodo;
     }
     
 }  

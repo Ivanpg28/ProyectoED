@@ -13,6 +13,20 @@ public class Arbol {
     private NodoArbol raiz;
     
     public NodoArbol addNodo(NodoArbol raiz) {
+        if(this.raiz == null) {
+            this.raiz = raiz;
+        }
+        else {
+            if (raiz.getDato().getClave().compareTo(this.raiz.getDato().getClave()) > 0) {
+                raiz.setHojaIzquierda(this.addNodo(raiz.getHojaIzquierda()));
+            }
+            else if ((raiz.getDato().getClave().compareTo(this.raiz.getDato().getClave()) < 0)) {
+                raiz.setHojaDerecha(this.addNodo(raiz.getHojaDerecha()));
+            }
+            else {
+                System.out.println("Item duplicado");
+            }
+        }
         return raiz;
     }
     
