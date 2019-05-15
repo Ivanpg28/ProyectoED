@@ -12,18 +12,18 @@ package proyectoed;
 public class NodoLista {
     private String clave;
     private Arbol raiz;
-    private NodoLista nodo;
+    private NodoLista siguiente;
 
     public NodoLista() {
         clave = null;
         raiz = null;
-        nodo = null;
+        siguiente = null;
     }
 
-    public NodoLista(String clave, Arbol raiz, NodoLista nodo) {
+    public NodoLista(String clave, Arbol raiz, NodoLista siguiente) {
         this.clave = clave;
         this.raiz = raiz;
-        this.nodo = nodo;
+        this.siguiente = siguiente;
     }
     
     
@@ -44,12 +44,12 @@ public class NodoLista {
         this.raiz = raiz;
     }
 
-    public NodoLista getNodo() {
-        return nodo;
+    public NodoLista getSiguiente() {
+        return siguiente;
     }
 
-    public void setNodo(NodoLista nodo) {
-        this.nodo = nodo;
+    public void setSiguiente(NodoLista siguiente) {
+        this.siguiente = siguiente;
     }
     
     
