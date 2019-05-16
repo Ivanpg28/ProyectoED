@@ -1,5 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+/* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -48,9 +47,11 @@ public class Arbol {
     public NodoArbol eliminarNodo(NodoArbol raiz) {
         return raiz;
     }
-    
-    public void recorrer() {
-        
+   
+    //Recibe la clave del arbol que se va a recorrer
+    public static void recorrer(String clave) {
+    //Funcion que recorre un arbol en preord llamando a recorrer de nodoArbol... 
+    //...para recorrer los nodos 
     }
     
 }

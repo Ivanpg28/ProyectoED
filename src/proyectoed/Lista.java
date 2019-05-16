@@ -39,7 +39,7 @@ public class Lista {
         this.fin = fin;
     }
     
-    public void recorrer(){
+    /*public void recorrer(){
         NodoLista actual = inicio;
         while(actual.getSiguiente()!=null){
             System.out.println("clave: "+actual.getClave()+"\n");
@@ -47,7 +47,7 @@ public class Lista {
             actual.getRaiz().recorrer();
             actual = actual.getSiguiente();
         }
-    }
+    }*/
     
     public NodoLista buscar(String clave){
         NodoLista actual;
@@ -77,4 +77,4 @@ public class Lista {
             }
         }
     }
-}  
+}
