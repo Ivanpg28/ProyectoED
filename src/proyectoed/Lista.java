@@ -41,18 +41,40 @@ public class Lista {
     
     public void recorrer(){
         NodoLista actual = inicio;
-        while(actual.getNodo()!=null){
-            System.out.println("clave"+actual.getClave()+"\n");
+        while(actual.getSiguiente()!=null){
+            System.out.println("clave: "+actual.getClave()+"\n");
             System.out.println("Arbol:\n");
             actual.getRaiz().recorrer();
-            actual = actual.getNodo();
+            actual = actual.getSiguiente();
         }
     }
     
     public NodoLista buscar(String clave){
         NodoLista actual;
-        for(actual = inicio ; actual != null && actual.getClave() != clave;actual=actual.getNodo());
-            return actual;
+        for(actual = inicio ; actual != null && !actual.getClave().equals(clave);actual=actual.getSiguiente());
+        return actual;
     }
-    
+
+    public void insertar(NodoLista nodo) {
+        if(inicio == null) {
+            inicio = nodo;
+            fin = inicio;
+        }
+        else {
+            NodoLista actual = inicio;
+            while(actual != null) {
+                if(actual == fin) {
+                    fin.setSiguiente(nodo);
+                    fin = nodo;
+                    return;
+                }
+                else if(actual.getSiguiente().getClave().compareTo(nodo.getClave()) > 0) {
+                    nodo.setSiguiente(actual.getSiguiente());
+                    actual.setSiguiente(nodo);
+                    return;
+                }
+                actual = actual.getSiguiente();
+            }
+        }
+    }
 }  
