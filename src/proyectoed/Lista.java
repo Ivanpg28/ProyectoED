@@ -55,14 +55,26 @@ public class Lista {
         return actual;
     }
 
-    void insertar(NodoLista nodo) {
+    public void insertar(NodoLista nodo) {
         if(inicio == null) {
             inicio = nodo;
+            fin = inicio;
         }
-        if(fin != null) {
-            fin.setSiguiente(nodo);
+        else {
+            NodoLista actual = inicio;
+            while(actual != null) {
+                if(actual == fin) {
+                    fin.setSiguiente(nodo);
+                    fin = nodo;
+                    return;
+                }
+                else if(actual.getSiguiente().getClave().compareTo(nodo.getClave()) > 0) {
+                    nodo.setSiguiente(actual.getSiguiente());
+                    actual.setSiguiente(nodo);
+                    return;
+                }
+                actual = actual.getSiguiente();
+            }
         }
-        fin = nodo;
     }
-    
 }  
