@@ -48,7 +48,14 @@ public class NodoArbol {
         this.hojaIzquierda = hojaIzquierda;
     }
     
-    private void recorrer() {
-        
+    //Funcion que recorre un nodo en preorden
+    public void recorrerNodo() {
+        System.out.println(dato);
+        if (hojaIzquierda!=null){
+            hojaIzquierda.recorrerNodo();
+        }
+        if (hojaDerecha!=null){
+            hojaDerecha.recorrerNodo();
+        }
     }
 }
