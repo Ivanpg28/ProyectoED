@@ -39,15 +39,15 @@ public class Lista {
         this.fin = fin;
     }
     
-    /*public void recorrer(){
+    public void recorrer(){
         NodoLista actual = inicio;
-        while(actual.getSiguiente()!=null){
-            System.out.println("clave: "+actual.getClave()+"\n");
+        while(actual!=null){
+            System.out.println("Clave: "+actual.getClave()+"\n");
             System.out.println("Arbol:\n");
-            actual.getRaiz().recorrer();
+            actual.getRaiz().recorrer(actual);
             actual = actual.getSiguiente();
         }
-    }*/
+    }
     
     public NodoLista buscar(String clave){
         NodoLista actual;
