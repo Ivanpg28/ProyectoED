@@ -23,7 +23,7 @@ public class ProyectoED {
      */
     public static void main(String[] args) {
         Lista lista = crearListaArboles("./");
-        //Lista.recorrer();
+        lista.recorrer();
         
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
