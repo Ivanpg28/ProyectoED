@@ -42,9 +42,8 @@ public class Lista {
     public void recorrer(){
         NodoLista actual = inicio;
         while(actual!=null){
-            System.out.println("Clave: "+actual.getClave()+"\n");
-            System.out.println("Arbol:\n");
-            actual.getRaiz().recorrer(actual);
+            System.out.println("\nClave: "+actual.getClave());
+            actual.getRaiz().recorrer(actual.getRaiz());
             actual = actual.getSiguiente();
         }
     }
