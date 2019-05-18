@@ -49,9 +49,15 @@ public class Arbol {
     }
    
     //Recibe la clave del arbol que se va a recorrer
-    public static void recorrer(String clave) {
     //Funcion que recorre un arbol en preord llamando a recorrer de nodoArbol... 
-    //...para recorrer los nodos 
+    //...para recorrer los nodos
+    public void recorrer(Arbol al){
+        if (raiz != null){
+            System.out.println("\nArbol:");
+            raiz.recorrerNodo();
+        }else{
+            System.out.println("\nArbol Vacio\n");
+        }
+        
     }
-    
 }
