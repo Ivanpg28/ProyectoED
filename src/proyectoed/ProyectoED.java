@@ -23,6 +23,7 @@ public class ProyectoED {
      */
     public static void main(String[] args) {
         Lista lista = crearListaArboles("./");
+        System.out.println("   Arboles Cargados en el Programa:");
         lista.recorrer();
         
         Scanner sn = new Scanner(System.in);
@@ -31,6 +32,7 @@ public class ProyectoED {
  
         while (!salir) {
  
+            System.out.println("\n    - - - MENU - - -");
             System.out.println("1. Insertar nuevo arbol");
             System.out.println("2. Eliminar un arbol");
             System.out.println("3. Elimina un nodo de un arbol");
@@ -45,7 +47,7 @@ public class ProyectoED {
  
                 switch (opcion) {
                     case 1:
-                        System.out.println("Has seleccionado la opcion 1");
+                        System.out.println("  1. INSERTAR NUEVO ARBOL");
                         System.out.println("Nombre del fichero (directorio del programa)(sin .txt):");
                         Scanner sn3 = new Scanner(System.in);
                         String filetxt = sn3.nextLine();
@@ -57,21 +59,22 @@ public class ProyectoED {
                         }  
                         break;
                     case 2:
-                        System.out.println("Has seleccionado la opcion 2");
+                        System.out.println("  2. ELIMINAR UN ARBOL");
                         break;
                     case 3:
-                        System.out.println("Has seleccionado la opcion 3");
+                        System.out.println("  3. ELIMINAR UN NODO DE UN ARBOL");
                         break;
                     case 4:
-                        System.out.println("Has seleccionado la opcion 4");
+                        System.out.println("  4. INSERTAR UN NODO EN UN ARBOL");
                         break;
                     case 5:
-                        System.out.println("Has seleccionado la opcion 5");
+                        System.out.println("  5. MOSTAR UN ARBOL");
                         System.out.println("Clave del Arbol:");
                         //Se pide la clave del arbol y se muestra en preorden
                         Scanner sn2 = new Scanner(System.in);
                         String clave = sn2.nextLine();
-                        //Arbol.recorrer(clave);
+                        NodoLista actual = lista.buscar(clave);
+                        actual.getRaiz().recorrer(actual.getRaiz());
                         break;
                     case 6:
                         salir = true;
