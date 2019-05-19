@@ -47,9 +47,58 @@ public class Arbol {
     public NodoArbol eliminarNodo(NodoArbol raiz) {
         return raiz;
     }
+    
+    private NodoArbol encontrarMin(NodoArbol raiz){
+        if (raiz != null)
+            while(raiz.getHojaIzquierda() != null)
+                raiz= raiz.getHojaIzquierda();
+        return raiz;
+    }
+    //Necesitamos este metodo removeMin, que sera llamado desde remove
+    private NodoArbol eliminarMin(NodoArbol raiz) throws NotFoundException {
+        if (raiz == null){
+            throw new NotFoundException();
+        }
+        else {
+            if (raiz.getHojaIzquierda() != null){
+                raiz.setHojaIzquierda(eliminarMin(raiz.getHojaIzquierda()));
+                return raiz;
+                }
+            else {
+                return raiz.getHojaDerecha();
+            }
+        }
+    }
+    
+    private NodoArbol eliminarNodo (String clave, NodoArbol raiz) throws NotFoundException{    
+        if(raiz == null){
+           throw new NotFoundException();
+        }
+        if(clave.compareTo(raiz.getDato().getClave()) < 0) {
+            raiz.setHojaIzquierda(eliminarNodo(clave, raiz.getHojaIzquierda()));
+
+        }
+        else if(clave.compareTo(raiz.getDato().getClave()) > 0){
+            raiz.setHojaDerecha(eliminarNodo(clave, raiz.getHojaDerecha()));
+        }
+        else if(raiz.getHojaIzquierda() != null && raiz.getHojaDerecha() != null){ //Dos hijos
+            raiz.setDato(encontrarMin(raiz.getHojaDerecha()).getDato());
+            raiz.setHojaDerecha(eliminarMin(raiz.getHojaDerecha()));
+        }
+        else
+            raiz= (raiz.getHojaIzquierda() != null) ? raiz.getHojaIzquierda()
+                    : raiz.getHojaDerecha();     
+        return raiz;
+    }
+    
+    public void eliminarNodo(String clave){
+        try{
+            raiz = eliminarNodo(clave, raiz);
+        }catch(NotFoundException nfe){System.out.println(nfe.toString());}
+    }
    
     //Recibe la clave del arbol que se va a recorrer
-    public static void recorrer(String clave) {
+    public void recorrer() {
     //Funcion que recorre un arbol en preord llamando a recorrer de nodoArbol... 
     //...para recorrer los nodos 
     }

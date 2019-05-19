@@ -28,6 +28,7 @@ public class ProyectoED {
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
+        String clave;
  
         while (!salir) {
  
@@ -61,6 +62,11 @@ public class ProyectoED {
                         break;
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
+                        System.out.println("¿De qué árbol se desea eliminar?");
+                        Scanner sn4 = new Scanner(System.in);
+                        clave = sn4.nextLine();
+                        System.out.println("Clave del nodo a eliminar:");
+                        lista.buscar(clave).getRaiz().eliminarNodo(sn4.nextLine());
                         break;
                     case 4:
                         System.out.println("Has seleccionado la opcion 4");
@@ -70,7 +76,7 @@ public class ProyectoED {
                         System.out.println("Clave del Arbol:");
                         //Se pide la clave del arbol y se muestra en preorden
                         Scanner sn2 = new Scanner(System.in);
-                        String clave = sn2.nextLine();
+                        clave = sn2.nextLine();
                         //Arbol.recorrer(clave);
                         break;
                     case 6:
