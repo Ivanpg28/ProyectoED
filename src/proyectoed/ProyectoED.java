@@ -49,8 +49,8 @@ public class ProyectoED {
                     case 1:
                         System.out.println("  1. INSERTAR NUEVO ARBOL");
                         System.out.println("Nombre del fichero (directorio del programa)(sin .txt):");
-                        Scanner sn3 = new Scanner(System.in);
-                        String filetxt = sn3.nextLine();
+                        Scanner sn1 = new Scanner(System.in);
+                        String filetxt = sn1.nextLine();
                         File fichero = new File(filetxt+".txt");
                         if (fichero.exists()){
                             reinfile(fichero, lista);
@@ -59,20 +59,32 @@ public class ProyectoED {
                         }  
                         break;
                     case 2:
-                        System.out.println("  2. ELIMINAR UN ARBOL");
+                        System.out.println("  2. ELIMINAR UN ARBOL");                        
+                        System.out.println("Nombre del Arbol a eliminar:");
+                        Scanner sn2 = new Scanner(System.in);
+                        String clave = sn2.nextLine();
+                        lista.eliminar(clave);
                         break;
                     case 3:
                         System.out.println("  3. ELIMINAR UN NODO DE UN ARBOL");
+                        System.out.println("¿De qué árbol se desea eliminar?");
+                        Scanner sn3 = new Scanner(System.in);
+                        clave = sn3.nextLine();
+                        System.out.println("Clave del nodo a eliminar:");
+                        lista.buscar(clave).getRaiz().eliminarNodo(sn3.nextLine());
                         break;
                     case 4:
                         System.out.println("  4. INSERTAR UN NODO EN UN ARBOL");
+                        
+                        
+                        
                         break;
                     case 5:
                         System.out.println("  5. MOSTAR UN ARBOL");
                         System.out.println("Clave del Arbol:");
                         //Se pide la clave del arbol y se muestra en preorden
-                        Scanner sn2 = new Scanner(System.in);
-                        String clave = sn2.nextLine();
+                        Scanner sn5 = new Scanner(System.in);
+                        clave = sn5.nextLine();
                         NodoLista actual = lista.buscar(clave);
                         actual.getRaiz().recorrer(actual.getRaiz());
                         break;
