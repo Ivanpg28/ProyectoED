@@ -48,19 +48,14 @@ public class NodoArbol {
         this.hojaIzquierda = hojaIzquierda;
     }
     
-    //VISUALIZAR EN PREORDEN
-    /*1º se trata el nodo actual
-    * 2º se trata el hijo izquierdo del nodo actual
-    * 3º se trata el hijo derecho del nodo actual
-    * Es decir, 1º se procesa el nodo y luego recursivamente sus hijos
-    */
-    public void recorrer() {
-        System.out.println(dato);    
-        if(hojaIzquierda!=null){
-            hojaIzquierda.recorrer();
+    //Funcion que recorre un nodo en preorden
+    public void recorrerNodo() {
+        System.out.println(dato);
+        if (hojaIzquierda!=null){
+            hojaIzquierda.recorrerNodo();
         }
-        if(hojaDerecha!=null){
-            hojaDerecha.recorrer();
+        if (hojaDerecha!=null){
+            hojaDerecha.recorrerNodo();
         }
     }
 }
