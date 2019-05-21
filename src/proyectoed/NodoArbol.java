@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoed;
 
 /**
@@ -13,6 +8,10 @@ public class NodoArbol {
     private DatoArbol dato;
     private NodoArbol hojaDerecha = null;
     private NodoArbol hojaIzquierda = null;
+
+    public NodoArbol() {
+        this.dato = null;
+    }    
 
     public NodoArbol(DatoArbol dato) {
         this.dato = dato;

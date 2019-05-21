@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoed;
 
 /**
@@ -39,15 +34,14 @@ public class Lista {
         this.fin = fin;
     }
     
-    /*public void recorrer(){
+    public void recorrer(){
         NodoLista actual = inicio;
-        while(actual.getSiguiente()!=null){
-            System.out.println("clave: "+actual.getClave()+"\n");
-            System.out.println("Arbol:\n");
-            actual.getRaiz().recorrer();
+        while(actual!=null){
+            System.out.println("\nClave: "+actual.getClave());
+            actual.getRaiz().recorrer(actual.getRaiz());
             actual = actual.getSiguiente();
         }
-    }*/
+    }
     
     public NodoLista buscar(String clave){
         NodoLista actual;
@@ -76,5 +70,49 @@ public class Lista {
                 actual = actual.getSiguiente();
             }
         }
+    }
+    
+    public void eliminar(String clave){
+        //Se podrian aniadir las excepciones lista vacia o un solo elto. en lista
+        boolean salir = false;
+        NodoLista actual = buscar(clave);
+        if (actual != null){
+            
+            //COntemplar los diferentes casos de eliminacion de lista
+            //Si es el ultimo elemento
+            if ((actual.getSiguiente())==null){
+                //Recorrer lista hasta encontrar el elto. que apunte a actual
+                NodoLista actual2 = inicio;
+                while (!salir){
+                    if (actual2.getSiguiente()==actual){
+                        actual2.setSiguiente(null);
+                        fin = actual2;
+                        salir=true;
+                    }else{
+                        actual2=actual2.getSiguiente();
+                    }
+                }
+            }else {
+                if (inicio==actual) { //Es el primer nodo de la lista
+                    inicio=actual.getSiguiente();
+                }else{//actual se encuentra en el medio
+                    //Recorrrer la lista hasta encontrar el elto. que aputnte a 
+                    //actual, y hacer que su puntero apunte a actual.Siguiente
+                    //Eliminando de esa forma acttual y dejando la lista enlzada
+                    NodoLista actual2 = inicio;
+                    while (!salir){
+                        if (actual2.getSiguiente()==actual){
+                            actual2.setSiguiente(actual.getSiguiente());
+                            salir=true;
+                        }else{
+                            actual2=actual2.getSiguiente();
+                        }
+                    }
+                }
+            }
+            
+        } else { 
+            System.out.println("No se ha encontrado ese arbol");    
+        }                
     }
 }
