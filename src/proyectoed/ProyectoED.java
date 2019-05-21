@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoed;
 
 import java.io.File;
@@ -27,10 +22,10 @@ public class ProyectoED {
         lista.recorrer();
         
         Scanner sn = new Scanner(System.in);
-        boolean salir = false;
-        int opcion; //Guardaremos la opcion del usuario
+        int opcion = 0; //Guardaremos la opcion del usuario
+        String clave;
  
-        while (!salir) {
+        while (opcion != 6) {
  
             System.out.println("\n    - - - MENU - - -");
             System.out.println("1. Insertar nuevo arbol");
@@ -41,16 +36,15 @@ public class ProyectoED {
             System.out.println("6. Salir");
  
             try {
- 
                 System.out.println("Escribe una de las opciones");
                 opcion = sn.nextInt();
- 
+                sn.nextLine();
+                
                 switch (opcion) {
                     case 1:
                         System.out.println("  1. INSERTAR NUEVO ARBOL");
                         System.out.println("Nombre del fichero (directorio del programa)(sin .txt):");
-                        Scanner sn1 = new Scanner(System.in);
-                        String filetxt = sn1.nextLine();
+                        String filetxt = sn.nextLine();
                         File fichero = new File(filetxt+".txt");
                         if (fichero.exists()){
                             reinfile(fichero, lista);
@@ -61,35 +55,45 @@ public class ProyectoED {
                     case 2:
                         System.out.println("  2. ELIMINAR UN ARBOL");                        
                         System.out.println("Nombre del Arbol a eliminar:");
-                        Scanner sn2 = new Scanner(System.in);
-                        String clave = sn2.nextLine();
+                        clave = sn.nextLine();
                         lista.eliminar(clave);
                         break;
                     case 3:
                         System.out.println("  3. ELIMINAR UN NODO DE UN ARBOL");
                         System.out.println("¿De qué árbol se desea eliminar?");
-                        Scanner sn3 = new Scanner(System.in);
-                        clave = sn3.nextLine();
+                        clave = sn.nextLine();
                         System.out.println("Clave del nodo a eliminar:");
-                        lista.buscar(clave).getRaiz().eliminarNodo(sn3.nextLine());
+                        lista.buscar(clave).getRaiz().eliminarNodo(sn.nextLine());
                         break;
                     case 4:
                         System.out.println("  4. INSERTAR UN NODO EN UN ARBOL");
-                        
-                        
-                        
+                        System.out.println("¿En qué árbol desea insertar nodo?");
+                        String arbol = sn.nextLine();
+                        System.out.println("Posición del nodo a insertar:");
+                        //Comprobar que el numero dado no esta en uso en el arbol
+                        int posicion = sn.nextInt();
+                        sn.nextLine();
+                        System.out.println("Clave del nodo a insertar:");
+                        clave = sn.nextLine();
+                        try{
+                            lista.buscar(arbol).getRaiz().addNodo(new NodoArbol(new DatoArbol(clave, posicion)));
+                        }catch(NullPointerException ex) {
+                            System.out.println("No se ha encontrado el árbol");
+                        }
                         break;
                     case 5:
-                        System.out.println("  5. MOSTAR UN ARBOL");
+                        System.out.println("  5. MOSTRAR UN ARBOL");
                         System.out.println("Clave del Arbol:");
                         //Se pide la clave del arbol y se muestra en preorden
-                        Scanner sn5 = new Scanner(System.in);
-                        clave = sn5.nextLine();
+                        clave = sn.nextLine();
                         NodoLista actual = lista.buscar(clave);
-                        actual.getRaiz().recorrer(actual.getRaiz());
+                        try{
+                            actual.getRaiz().recorrer(actual.getRaiz());
+                        }catch(NullPointerException ex) {
+                            System.out.println("No se ha encontrado el árbol");
+                        }
                         break;
                     case 6:
-                        salir = true;
                         break;
                     default:
                         System.out.println("Solo números entre 1 y 6");
@@ -126,11 +130,11 @@ public class ProyectoED {
                     line = fileIn.nextLine();
                     String [] datos=line.split(" ");
                     datoarbol = new DatoArbol(datos[1], Integer.parseInt(datos[0]));
-                    arbol.addNodo(new NodoArbol(datoarbol, null, null));
+                    arbol.addNodo(new NodoArbol(datoarbol));
                 }
                 fileIn.close();
             }
-            lista.insertar(new NodoLista(file.getName().substring(0, file.getName().length()-4), arbol, null));
+            lista.insertar(new NodoLista(file.getName().substring(0, file.getName().length()-4), arbol));
 
         }catch(IOException ex){
             System.out.println("Error en la apertura del fichero"+

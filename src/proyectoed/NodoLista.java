@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoed;
 
 /**
@@ -12,7 +7,7 @@ package proyectoed;
 public class NodoLista {
     private String clave;
     private Arbol raiz;
-    private NodoLista siguiente;
+    private NodoLista siguiente = null;
 
     public NodoLista() {
         clave = null;
@@ -25,9 +20,12 @@ public class NodoLista {
         this.raiz = raiz;
         this.siguiente = siguiente;
     }
-    
-    
 
+    public NodoLista(String clave, Arbol raiz) {
+        this.clave = clave;
+        this.raiz = raiz;
+    }
+    
     public String getClave() {
         return clave;
     }

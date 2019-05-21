@@ -1,7 +1,3 @@
-/* To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoed;
 
 /**
@@ -10,6 +6,14 @@ package proyectoed;
  */
 public class Arbol {
     private NodoArbol raiz;
+
+    public Arbol() {
+        this.raiz = null;
+    }
+
+    public Arbol(NodoArbol raiz) {
+        this.raiz = raiz;
+    }
     
     public void addNodo(NodoArbol raiz) {
         if(this.raiz == null) {
@@ -33,7 +37,7 @@ public class Arbol {
                         break;
                     }
                     else {
-                        nodo = nodo.getHojaIzquierda();
+                        nodo = nodo.getHojaDerecha();
                     }
                 }
                 else {
@@ -54,7 +58,7 @@ public class Arbol {
                 raiz= raiz.getHojaIzquierda();
         return raiz;
     }
-    //Necesitamos este metodo removeMin, que sera llamado desde remove
+    
     private NodoArbol eliminarMin(NodoArbol raiz) throws NotFoundException {
         if (raiz == null){
             throw new NotFoundException();
@@ -81,7 +85,7 @@ public class Arbol {
         else if(clave.compareTo(raiz.getDato().getClave()) > 0){
             raiz.setHojaDerecha(eliminarNodo(clave, raiz.getHojaDerecha()));
         }
-        else if(raiz.getHojaIzquierda() != null && raiz.getHojaDerecha() != null){ //Dos hijos
+        else if(raiz.getHojaIzquierda() != null && raiz.getHojaDerecha() != null){
             raiz.setDato(encontrarMin(raiz.getHojaDerecha()).getDato());
             raiz.setHojaDerecha(eliminarMin(raiz.getHojaDerecha()));
         }

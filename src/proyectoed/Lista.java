@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoed;
 
 /**
@@ -80,9 +75,9 @@ public class Lista {
     public void eliminar(String clave){
         //Se podrian aniadir las excepciones lista vacia o un solo elto. en lista
         boolean salir = false;
-        
-        if ((buscar(clave))!=null){
-            NodoLista actual=buscar(clave);
+        NodoLista actual = buscar(clave);
+        if (actual != null){
+            
             //COntemplar los diferentes casos de eliminacion de lista
             //Si es el ultimo elemento
             if ((actual.getSiguiente())==null){
@@ -91,6 +86,7 @@ public class Lista {
                 while (!salir){
                     if (actual2.getSiguiente()==actual){
                         actual2.setSiguiente(null);
+                        fin = actual2;
                         salir=true;
                     }else{
                         actual2=actual2.getSiguiente();
@@ -106,7 +102,7 @@ public class Lista {
                     NodoLista actual2 = inicio;
                     while (!salir){
                         if (actual2.getSiguiente()==actual){
-                            actual2.setSiguiente(actual);
+                            actual2.setSiguiente(actual.getSiguiente());
                             salir=true;
                         }else{
                             actual2=actual2.getSiguiente();
